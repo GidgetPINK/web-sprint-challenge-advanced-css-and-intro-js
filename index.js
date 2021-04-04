@@ -266,13 +266,11 @@ get20s(artists, "1907 - 1954", "years", "name");
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(array, index){
-  for(let i=0; i < array.length; i++){
-    artists.splice(index[i]);
-  }
+ function removeArtist(arr, index){
+  artists.splice(index, 1);
   return artists.length
 }
-removeArtist(artists, 1);
+removeArtist(artists, 0);
    
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -351,11 +349,6 @@ function getHTML(/* Code here */){
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
-
-    /* Code here */
-
-  }
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
