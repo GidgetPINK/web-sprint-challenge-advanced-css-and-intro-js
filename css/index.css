@@ -27,6 +27,8 @@ body{
     font-size:1.6rem;
     line-height: 1.5;
     font-family: 'Raleway', sans-serif;	
+    max-width: 1600px;
+    margin: 0 auto;
 }
 h1, p, .name, .bio {	
     font-family: 'Raleway', sans-serif;	
@@ -138,7 +140,7 @@ button:hover{
 /* ===============
 Media Queries 
 ==================*/
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 930px) {
     .artists-container {
         flex-wrap: wrap;
     }
