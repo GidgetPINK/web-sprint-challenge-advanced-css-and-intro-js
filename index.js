@@ -208,16 +208,21 @@ Practice accessing data above by console.log-ing following items:
 (no functions needed) */
 
 //(1) Name of the first artist (0th index) in the array
-
+console.log(artists[0].name);
 
 //(2) Bio of the third artist (2nd index) in the array 
+console.log(artists[2].bio);
 
+/* EXPLANATION: The above code selects the array index that contains the appropriate artist and points to the requested key*/ 
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
+artists[8].name = "Vincent van Gogh";
+console.log(artists[8].name);
 
+/* EXPLANATION: In the above code I have selected the index for the data containing the error, pointed to the key that needs the correction, and changed the string */
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀  
@@ -228,10 +233,12 @@ There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is current
  
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
-function getArtistByIndex(/*Your Code Here*/) {
-  /*Your Code Here*/
+ function getArtistByIndex(arr, num) {
+  return `the artist at index ${arr[num].id} is ${arr[num].name}`;
 }  
+getArtistByIndex(artists, 0);
 
+/* EXPLANATION: Here I have added parameters based on the directive and used template literals to create the string*/
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -241,10 +248,20 @@ Use get20s to do the following:
 
 Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
+function get20s(arr, string, key, key2){
+  const newArray = [];
+  for (let i=0; i < arr.length; i++){
+    if(arr[i][key].includes(string)){
+      newArray.push(arr[i][key2]);
+    }
+  }
+  return newArray;
+    }
+get20s(artists, "1907 - 1954", "years", "name");
 
-function get20s(/*Your Code Here*/){
-  /*Your Code Here*/
-}
+/* EXPLANATION: Parameters have been added to receive the specific array, string location, and the artist's name. 
+The function will accept arguments for the string, the years key and the name key values. The argument for the key2 parameter will 
+be used to push the name details into the newly created array */
 
 
 
@@ -257,9 +274,13 @@ function get20s(/*Your Code Here*/){
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(/*Your Code Here*/){
-   /*Your Code Here*/
+ function removeArtist(arr, index){
+  artists.splice(index, 1);
+  return artists.length
 }
+removeArtist(artists, 0);
+
+/* EXPLANATION: Here parameters have been set to receive an array and an index. The splice method has been used to remove an artist based on the index passed as an argument */
    
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -278,11 +299,13 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/){
-    /*Your Code Here*/
+function addArtist(array, id, name, years, genre, nationality, bio){
+    array.push({id, name, years, genre, nationality, bio});
+    return array;
   }
+  addArtist(artists, 20, "Apryl Smith", "1985 - Saturday", "Web Design", "American", "Learning Javascript is not easy");
 
-  
+/* EXPLANATION: I created parameters to receive each key for the new object and passed the values in as arguments*/
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use lotsOfArt to do the following: 
@@ -291,12 +314,20 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(arr, key, key2){
+  const paintingNum = [];
+  for(let i=0; i < arr.length; i++){
+    if(arr[i][key] > 100){
+      paintingNum.push(arr[i][key2])
+    }
+  }
+  return paintingNum;
 }
+lotsOfArt(artists, "paintings", "name");
 
-
-
+/* EXPLANATION: Here I created a new array to hold the names of the artists who painted more than 100 paintings.
+A for loop was created to cycle through the original array looking for values greater than 100 in the paintings key.
+If the values were greater than 100 the name of that artist is pushed into the newly created array*/
 
 // 🎨🎨 STRETCH 🎨🎨//
 /* 💪💪💪💪💪💪 STRETCH 1: 💪💪💪💪💪💪 
@@ -330,11 +361,6 @@ function getHTML(/* Code here */){
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
-
-    /* Code here */
-
-  }
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
